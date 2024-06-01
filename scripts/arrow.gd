@@ -13,5 +13,5 @@ func _process(delta):
 	position += direction * SPEED * delta
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	break_arrow.play("break")
