@@ -4,12 +4,12 @@
 
 [sub_resource type="Curve" id="Curve_k4qbf"]
 bake_resolution = 2
-_data = [Vector2(0.0716511, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.710754), -0.0644776, 0.0, 0, 0]
+_data = [Vector2(0.0485437, 0.236712), 0.0, 0.0, 0, 0, Vector2(1, 0.710754), -0.0644776, 0.0, 0, 0]
 point_count = 2
 
 [node name="Trail" type="Line2D"]
 z_index = 3
-points = PackedVector2Array(33, 44, 208, 103)
+points = PackedVector2Array(33, 44, 39, 46)
 width = 2.0
 width_curve = SubResource("Curve_k4qbf")
 joint_mode = 2
