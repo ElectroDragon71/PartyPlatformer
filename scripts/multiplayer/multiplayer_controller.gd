@@ -1,4 +1,13 @@
 extends CharacterBody2D
+
+# Multiplayer
+
+@export var player_id := 1:
+	set(id):
+		player_id = id
+		#%PlayerSynchronizer.set_multiplayer_authority(id)
+
+
 ## An extendable character for platforming games including features like coyote time,
 ## jump buffering, jump cancelling, sprinting, and wall jumping.  
 ##
@@ -10,7 +19,7 @@ extends CharacterBody2D
 ## be adjusted to fit your specific needs
 
 ## The four possible character states and the character's current state
-enum {IDLE, WALK, JUMP, FALL, WALL_SLIDE, SPRINT}
+enum {IDLE, WALK, SPRINT, JUMP, FALL, WALL_SLIDE}
 ## The values for the jump direction, default is UP or -1
 enum JUMP_DIRECTIONS {UP = -1, DOWN = 1}
 
@@ -73,7 +82,7 @@ enum JUMP_DIRECTIONS {UP = -1, DOWN = 1}
 
 
 ## The players current state
-var state: int = IDLE
+@export var state: int = IDLE
 ## The player is sprinting when [param sprinting] is true
 var sprinting := false
 ## The player can jump when [param can_jump] is true
@@ -90,9 +99,16 @@ var jumping := false
 ## The player can wall jump when [param can_wall_jump] is true
 @onready var can_wall_jump: bool = ENABLE_WALL_JUMPING
 
+func _ready():
+	%PlayerSynchronizer.set_multiplayer_authority(name.to_int())
+	if multiplayer.get_unique_id() == player_id:
+		$Camera2D.make_current()
+	else:
+		$Camera2D.enabled = false
 
 func _physics_process(delta: float) -> void:
-	physics_tick(delta)
+	if %PlayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		physics_tick(delta)
 
 
 ## Overrideable physics process used by the controller that calls whatever functions should be called
@@ -102,12 +118,12 @@ func physics_tick(delta: float) -> void:
 	handle_jump(delta, inputs.input_direction, inputs.jump_strength, inputs.jump_pressed, inputs.jump_released)
 	handle_sprint(inputs.sprint_strength)
 	handle_velocity(delta, inputs.input_direction)
-
+	
 	manage_animations()
 	manage_state()
 	
 	# We have to handle the gravity after the state
-	handle_gravity(delta) 
+	handle_gravity(delta)
 
 	move_and_slide()
 
@@ -150,7 +166,7 @@ func manage_animations() -> void:
 		FALL:
 			ANIMATION_PLAYER.play("fall")
 		WALL_SLIDE:
-			ANIMATION_PLAYER.play("fall") # 
+			ANIMATION_PLAYER.play("fall")
 
 
 ## Gets the strength and status of the mapped actions
@@ -162,7 +178,6 @@ func get_inputs() -> Dictionary:
 		jump_released = Input.is_action_just_released(ACTION_JUMP),
 		sprint_strength = Input.get_action_strength(ACTION_SPRINT) if ENABLE_SPRINT else 0.0,
 	}
-
 
 ## Gets the X/Y axis movement direction using the input mappings assigned to the ACTION UP/DOWN/LEFT/RIGHT variables
 func get_input_direction() -> Vector2:

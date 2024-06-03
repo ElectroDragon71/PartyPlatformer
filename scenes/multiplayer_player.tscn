@@ -1,13 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfh2rnp6lvooq"]
+[gd_scene load_steps=21 format=3 uid="uid://bk4wbvdbit0q5"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_kjbjo"]
-[ext_resource type="Texture2D" uid="uid://dfnrs4tcsdjg7" path="res://assets/textures/Player/Slime/Slime.png" id="2_v6cpj"]
-[ext_resource type="Shape2D" uid="uid://dhhosieefl2f3" path="res://resources/player_standing_cshape.tres" id="3_drpcn"]
-[ext_resource type="Texture2D" uid="uid://dl6lpya80sqsb" path="res://assets/textures/jelly_crouch.png" id="4_jgm5r"]
-[ext_resource type="Texture2D" uid="uid://dt1na3ijqv5a2" path="res://assets/textures/Player/Slime/SlimeFall.png" id="5_2pvj4"]
-[ext_resource type="Texture2D" uid="uid://ckd5hnn377mvy" path="res://assets/textures/Player/Slime/SlimeJump.png" id="6_8fa8p"]
-[ext_resource type="Texture2D" uid="uid://dfn372026m1ty" path="res://assets/textures/Player/Slime/SlimeWalk.png" id="7_2ll8e"]
-[ext_resource type="Texture2D" uid="uid://ccxk63p6ill4d" path="res://assets/textures/Player/Slime/SlimeRun.png" id="8_cpye1"]
+[ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_fsyi5"]
+[ext_resource type="Shape2D" uid="uid://dhhosieefl2f3" path="res://resources/player_standing_cshape.tres" id="3_4ag6m"]
+[ext_resource type="Texture2D" uid="uid://dfnrs4tcsdjg7" path="res://assets/textures/Player/Slime/Slime.png" id="3_x8dnd"]
+[ext_resource type="Texture2D" uid="uid://dl6lpya80sqsb" path="res://assets/textures/jelly_crouch.png" id="4_qfban"]
+[ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_input.gd" id="5_0xo15"]
+[ext_resource type="Texture2D" uid="uid://dt1na3ijqv5a2" path="res://assets/textures/Player/Slime/SlimeFall.png" id="6_xxlw5"]
+[ext_resource type="Texture2D" uid="uid://ckd5hnn377mvy" path="res://assets/textures/Player/Slime/SlimeJump.png" id="7_g6w33"]
+[ext_resource type="Texture2D" uid="uid://dfn372026m1ty" path="res://assets/textures/Player/Slime/SlimeWalk.png" id="8_baakj"]
+[ext_resource type="Texture2D" uid="uid://ccxk63p6ill4d" path="res://assets/textures/Player/Slime/SlimeRun.png" id="9_r6rtj"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b5p5h"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1atu8"]
 
 [sub_resource type="Animation" id="Animation_wdjxc"]
 length = 0.001
@@ -21,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_v6cpj")]
+"values": [ExtResource("3_x8dnd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,7 +83,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_jgm5r")]
+"values": [ExtResource("4_qfban")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -128,7 +136,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_jgm5r")]
+"values": [ExtResource("4_qfban")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -181,7 +189,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_2pvj4")]
+"values": [ExtResource("6_xxlw5")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -235,7 +243,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_v6cpj")]
+"values": [ExtResource("3_x8dnd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -289,7 +297,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_8fa8p")]
+"values": [ExtResource("7_g6w33")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -343,7 +351,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_2ll8e")]
+"values": [ExtResource("8_baakj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -394,7 +402,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_cpye1")]
+"values": [ExtResource("9_r6rtj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -445,22 +453,36 @@ _data = {
 "walk": SubResource("Animation_oqc1o")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
-top_level = true
-z_index = 5
+[node name="MultiplayerPlayer" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_kjbjo")
+script = ExtResource("1_fsyi5")
+
+[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
+replication_config = SubResource("SceneReplicationConfig_b5p5h")
+
+[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
+replication_config = SubResource("SceneReplicationConfig_1atu8")
+script = ExtResource("5_0xo15")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
-texture = ExtResource("2_v6cpj")
+texture = ExtResource("3_x8dnd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6.5)
-shape = ExtResource("3_drpcn")
+shape = ExtResource("3_4ag6m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_xndv2")
 }
 autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -22)
+zoom = Vector2(0.5, 0.5)
+process_callback = 0
+limit_bottom = 230
+position_smoothing_enabled = true

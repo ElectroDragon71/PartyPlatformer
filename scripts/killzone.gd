@@ -8,4 +8,4 @@ func _on_body_entered(_body):
 
 
 func _on_timer_timeout():
-	get_tree().reload_current_scene()
+	pass

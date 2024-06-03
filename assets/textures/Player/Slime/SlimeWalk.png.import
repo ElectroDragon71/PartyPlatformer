@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfnrs4tcsdjg7"
-path="res://.godot/imported/Slime.png-2a39293198000209fe1b240dc3748eac.ctex"
+uid="uid://dfn372026m1ty"
+path="res://.godot/imported/SlimeWalk.png-3c9a46d4549becd6614da8d508f59156.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Slime.png"
-dest_files=["res://.godot/imported/Slime.png-2a39293198000209fe1b240dc3748eac.ctex"]
+source_file="res://assets/textures/Player/Slime/SlimeWalk.png"
+dest_files=["res://.godot/imported/SlimeWalk.png-3c9a46d4549becd6614da8d508f59156.ctex"]
 
 [params]
 
