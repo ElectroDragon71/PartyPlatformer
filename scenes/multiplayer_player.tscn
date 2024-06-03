@@ -1,21 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://bk4wbvdbit0q5"]
+[gd_scene load_steps=19 format=3 uid="uid://bk4wbvdbit0q5"]
 
 [ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_fsyi5"]
 [ext_resource type="Shape2D" uid="uid://dhhosieefl2f3" path="res://resources/player_standing_cshape.tres" id="3_4ag6m"]
 [ext_resource type="Texture2D" uid="uid://dfnrs4tcsdjg7" path="res://assets/textures/Player/Slime/Slime.png" id="3_x8dnd"]
 [ext_resource type="Texture2D" uid="uid://dl6lpya80sqsb" path="res://assets/textures/jelly_crouch.png" id="4_qfban"]
-[ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_input.gd" id="5_0xo15"]
 [ext_resource type="Texture2D" uid="uid://dt1na3ijqv5a2" path="res://assets/textures/Player/Slime/SlimeFall.png" id="6_xxlw5"]
 [ext_resource type="Texture2D" uid="uid://ckd5hnn377mvy" path="res://assets/textures/Player/Slime/SlimeJump.png" id="7_g6w33"]
 [ext_resource type="Texture2D" uid="uid://dfn372026m1ty" path="res://assets/textures/Player/Slime/SlimeWalk.png" id="8_baakj"]
 [ext_resource type="Texture2D" uid="uid://ccxk63p6ill4d" path="res://assets/textures/Player/Slime/SlimeRun.png" id="9_r6rtj"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b5p5h"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1atu8"]
 
 [sub_resource type="Animation" id="Animation_wdjxc"]
 length = 0.001
@@ -336,6 +328,57 @@ tracks/3/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_ioao3"]
+resource_name = "run"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_r6rtj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_oqc1o"]
 resource_name = "walk"
 length = 0.6
@@ -390,57 +433,6 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_ioao3"]
-resource_name = "run"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("9_r6rtj")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xndv2"]
 _data = {
 "RESET": SubResource("Animation_wdjxc"),
@@ -453,18 +445,23 @@ _data = {
 "walk": SubResource("Animation_oqc1o")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b5p5h"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimationPlayer:current_animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite2D:flip_h")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:player_id")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
 [node name="MultiplayerPlayer" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fsyi5")
-
-[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-unique_name_in_owner = true
-replication_config = SubResource("SceneReplicationConfig_b5p5h")
-
-[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="."]
-unique_name_in_owner = true
-replication_config = SubResource("SceneReplicationConfig_1atu8")
-script = ExtResource("5_0xo15")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
@@ -480,9 +477,6 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -22)
-zoom = Vector2(0.5, 0.5)
-process_callback = 0
-limit_bottom = 230
-position_smoothing_enabled = true
+[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
+replication_config = SubResource("SceneReplicationConfig_b5p5h")

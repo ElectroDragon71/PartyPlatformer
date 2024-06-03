@@ -99,12 +99,12 @@ var jumping := false
 ## The player can wall jump when [param can_wall_jump] is true
 @onready var can_wall_jump: bool = ENABLE_WALL_JUMPING
 
-func _ready():
+func _enter_tree():
 	%PlayerSynchronizer.set_multiplayer_authority(name.to_int())
-	if multiplayer.get_unique_id() == player_id:
-		$Camera2D.make_current()
-	else:
-		$Camera2D.enabled = false
+
+func _ready():
+	# %PlayerSynchronizer.set_multiplayer_authority(name.to_int())
+	pass
 
 func _physics_process(delta: float) -> void:
 	if %PlayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():

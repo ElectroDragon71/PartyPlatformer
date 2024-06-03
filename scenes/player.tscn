@@ -328,11 +328,8 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_oqc1o"]
-resource_name = "walk"
-length = 0.6
-loop_mode = 1
-step = 0.2
+[sub_resource type="Animation" id="Animation_ioao3"]
+resource_name = "run"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -343,7 +340,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_2ll8e")]
+"values": [ExtResource("8_cpye1")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -382,8 +379,11 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_ioao3"]
-resource_name = "run"
+[sub_resource type="Animation" id="Animation_oqc1o"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -394,7 +394,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_cpye1")]
+"values": [ExtResource("7_2ll8e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
