@@ -7,11 +7,12 @@ var multiplayer_scene = preload("res://scenes/multiplayer_player.tscn")
 
 var _players_spawn_node
 
+var respawn_point = Vector2(40,-30)
+
 func become_host():
 	print("Starting Host")
 	
 	_players_spawn_node = get_tree().get_current_scene().get_node("Players")
-	
 	var server_peer = ENetMultiplayerPeer.new()
 	server_peer.create_server(SERVER_PORT)
 	

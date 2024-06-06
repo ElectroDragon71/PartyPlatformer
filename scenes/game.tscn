@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dt1mswhqjy735"]
+[gd_scene load_steps=14 format=3 uid="uid://dt1mswhqjy735"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_e1ci3"]
 [ext_resource type="PackedScene" uid="uid://dfh2rnp6lvooq" path="res://scenes/player.tscn" id="1_h4d0n"]
@@ -8,8 +8,47 @@
 [ext_resource type="PackedScene" uid="uid://qyvcnvok4wsp" path="res://scenes/killzone.tscn" id="6_f135r"]
 [ext_resource type="PackedScene" uid="uid://do8tqo3t43nt8" path="res://scenes/stair.tscn" id="8_j88nk"]
 [ext_resource type="FontFile" uid="uid://dimaxnee30ly7" path="res://assets/fonts/PixelOperator8.ttf" id="9_b7lbx"]
+[ext_resource type="PackedScene" uid="uid://chq8an0s7l6k4" path="res://scenes/platform.tscn" id="9_p8u0f"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_idpar"]
+
+[sub_resource type="Animation" id="Animation_1k23l"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(352, 148), Vector2(480, 148)]
+}
+
+[sub_resource type="Animation" id="Animation_jc34h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(311, 104)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1j3x"]
+_data = {
+"RESET": SubResource("Animation_jc34h"),
+"move": SubResource("Animation_1k23l")
+}
 
 [node name="Game" type="Node2D"]
 
@@ -106,6 +145,15 @@ spawn_limit = 3
 
 [node name="Players" type="Node2D" parent="."]
 position = Vector2(-289, 149)
+
+[node name="Platform" parent="." instance=ExtResource("9_p8u0f")]
+position = Vector2(311, 104)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+libraries = {
+"": SubResource("AnimationLibrary_g1j3x")
+}
+autoplay = "move"
 
 [connection signal="pressed" from="MultiplayerHUD/Panel/VBoxContainer/HostGame" to="GameManager" method="become_host"]
 [connection signal="pressed" from="MultiplayerHUD/Panel/VBoxContainer/JoinAsPlayer2" to="GameManager" method="join_as_player_2"]

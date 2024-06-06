@@ -2,10 +2,10 @@ extends Area2D
 
 @onready var timer = $Timer
 
-func _on_body_entered(_body):
+func _on_body_entered(body):
 	print("you ded")
-	timer.start()
+	_multiplayer_dead(body)
 
-
-func _on_timer_timeout():
-	pass
+func _multiplayer_dead(body):
+	if body.alive:
+		body.mark_dead()

@@ -6,7 +6,24 @@ extends CharacterBody2D
 	set(id):
 		player_id = id
 		#%PlayerSynchronizer.set_multiplayer_authority(id)
+		
 
+var alive = true
+
+func mark_dead():
+	print("Mark Player Dead")
+	alive = false
+	$CollisionShape2D.set_deferred("disabled", true)
+	$RespawnTimer.start()
+
+func _respawn():
+	print("Respawned")
+	position = MultiplayerManager.respawn_point
+	$CollisionShape2D.set_deferred("disabled", false)
+
+func _set_alive():
+	print("alive again")
+	alive = true
 
 ## An extendable character for platforming games including features like coyote time,
 ## jump buffering, jump cancelling, sprinting, and wall jumping.  
@@ -108,6 +125,8 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if %PlayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		if not alive && is_on_floor():
+			_set_alive()
 		physics_tick(delta)
 
 

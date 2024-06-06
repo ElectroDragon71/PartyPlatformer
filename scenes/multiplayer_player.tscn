@@ -480,3 +480,9 @@ autoplay = "idle"
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_b5p5h")
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_respawn"]
