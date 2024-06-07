@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbetawyfqtbyb"]
+[gd_scene load_steps=3 format=3 uid="uid://dbetawyfqtbyb"]
 
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_r10k0"]
 [ext_resource type="Theme" uid="uid://bgyplibccu45i" path="res://resources/settings_theme.tres" id="1_xyjld"]
 
 [node name="Inventory" type="Popup"]
@@ -9,6 +10,7 @@ size = Vector2i(280, 160)
 visible = true
 min_size = Vector2i(280, 160)
 keep_title_visible = true
+script = ExtResource("1_r10k0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -26,15 +28,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xyjld")
 
-[node name="Platform" type="TabBar" parent="TabContainer"]
+[node name="Page1" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/Platform"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Page1"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Page1/MarginContainer"]
+layout_mode = 2
 columns = 3
 
-[node name="Shooting" type="TabBar" parent="TabContainer"]
+[node name="StairsButton" type="Button" parent="TabContainer/Page1/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Stairs"
+
+[node name="ArrowBoxButton" type="Button" parent="TabContainer/Page1/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "ArrowBox"
+
+[node name="Page2" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
