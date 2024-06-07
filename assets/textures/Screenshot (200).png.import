@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drk3l2ys3mldk"
-path="res://.godot/imported/ArrowBox.png-d88e21eb89892879570df64f6791118d.ctex"
+uid="uid://c80m0pfb68r23"
+path="res://.godot/imported/Screenshot (200).png-12fa291cd47df3e9cd8960fbeebd8658.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ArrowBox.png"
-dest_files=["res://.godot/imported/ArrowBox.png-d88e21eb89892879570df64f6791118d.ctex"]
+source_file="res://assets/textures/Screenshot (200).png"
+dest_files=["res://.godot/imported/Screenshot (200).png-12fa291cd47df3e9cd8960fbeebd8658.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://da6jsq5adnbwr"]
 
 [ext_resource type="Script" path="res://scripts/arrow_box.gd" id="1_m0ac6"]
-[ext_resource type="Texture2D" uid="uid://drk3l2ys3mldk" path="res://assets/textures/ArrowBox.png" id="1_yx0kr"]
+[ext_resource type="Texture2D" uid="uid://drk3l2ys3mldk" path="res://assets/textures/Traps/ArrowBox.png" id="1_yx0kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h82uj"]
 size = Vector2(16, 16)

@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://b2d6wh8eltkfp"]
+[gd_scene load_steps=6 format=3 uid="uid://b2d6wh8eltkfp"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_prh58"]
+[ext_resource type="Texture2D" uid="uid://c80m0pfb68r23" path="res://assets/textures/Screenshot (200).png" id="1_vtqx2"]
+[ext_resource type="FontFile" uid="uid://dimaxnee30ly7" path="res://assets/fonts/PixelOperator8.ttf" id="2_sob0d"]
+[ext_resource type="FontFile" uid="uid://kwqw5yocyxom" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_2g2vi"]
+[ext_resource type="PackedScene" uid="uid://bjxs0p2nwnuwj" path="res://scenes/settings_menu.tscn" id="5_6j0k4"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -7,3 +13,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_prh58")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_vtqx2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 66.0
+offset_right = 223.0
+offset_bottom = 106.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Host" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sob0d")
+text = "Host"
+
+[node name="Join" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sob0d")
+text = "Join"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sob0d")
+text = "Settings"
+
+[node name="ExitGame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sob0d")
+text = "Exit Game"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 30.0
+offset_right = 284.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("3_2g2vi")
+text = "Party Platformer"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("5_6j0k4")]
+visible = false
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]

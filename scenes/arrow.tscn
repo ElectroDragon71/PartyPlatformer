@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhk7eb4by4otg"]
 
 [ext_resource type="Script" path="res://scripts/arrow.gd" id="1_c03tv"]
-[ext_resource type="Texture2D" uid="uid://bessfeni421mo" path="res://assets/textures/Arrow.png" id="2_sxi8k"]
+[ext_resource type="Texture2D" uid="uid://bcsa3jk62k5gs" path="res://assets/textures/Traps/Arrow.png" id="2_en5vd"]
 [ext_resource type="PackedScene" uid="uid://qyvcnvok4wsp" path="res://scenes/killzone.tscn" id="3_8fuh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1a8"]
@@ -113,7 +113,7 @@ script = ExtResource("1_c03tv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7, -1)
-texture = ExtResource("2_sxi8k")
+texture = ExtResource("2_en5vd")
 
 [node name="Killzone" parent="." instance=ExtResource("3_8fuh5")]
 

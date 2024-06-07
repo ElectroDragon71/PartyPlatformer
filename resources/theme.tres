@@ -1,0 +1,57 @@
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://7mtgo1sp52qi"]
+
+[ext_resource type="Texture2D" uid="uid://c2qh4xm2dqm1o" path="res://assets/textures/ThemeImages/SliderDot.png" id="1_dhdqv"]
+[ext_resource type="FontFile" uid="uid://dimaxnee30ly7" path="res://assets/fonts/PixelOperator8.ttf" id="2_36v0c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftbvj"]
+bg_color = Color(0.505882, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wg67h"]
+bg_color = Color(0, 0.14902, 0.298039, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j43rv"]
+bg_color = Color(0, 0.68153, 0.71555, 0.482353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80plq"]
+bg_color = Color(1.58831e-06, 0.338419, 2.40654e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83seu"]
+bg_color = Color(0.558645, 0.572442, 0.833194, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6pk5"]
+content_margin_left = 0.0
+content_margin_top = 1.0
+bg_color = Color(0.293279, 0.637667, 0.842847, 1)
+anti_aliasing_size = 3.558
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_15fwj"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xr87h"]
+bg_color = Color(0.237511, 0.279426, 0.287313, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5n0r"]
+bg_color = Color(0.124793, 0.149468, 0.154403, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecyyf"]
+bg_color = Color(0.239216, 0.278431, 0.286275, 1)
+
+[resource]
+default_font = ExtResource("2_36v0c")
+default_font_size = 8
+Button/fonts/font = ExtResource("2_36v0c")
+Button/styles/disabled = SubResource("StyleBoxFlat_ftbvj")
+Button/styles/focus = SubResource("StyleBoxFlat_wg67h")
+Button/styles/normal = SubResource("StyleBoxFlat_j43rv")
+Button/styles/pressed = SubResource("StyleBoxFlat_80plq")
+HSlider/icons/grabber = ExtResource("1_dhdqv")
+HSlider/icons/grabber_disabled = ExtResource("1_dhdqv")
+HSlider/icons/grabber_highlight = ExtResource("1_dhdqv")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_83seu")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_q6pk5")
+HSlider/styles/slider = SubResource("StyleBoxLine_15fwj")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_xr87h")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_l5n0r")
+TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_ecyyf")

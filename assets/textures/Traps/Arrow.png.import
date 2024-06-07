@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6xdom4i232rx"
-path="res://.godot/imported/Stair.png-8eb92aea8a2c8c9227fe871e6e8ef253.ctex"
+uid="uid://bcsa3jk62k5gs"
+path="res://.godot/imported/Arrow.png-6cabdc598c6df7be3df1f8d7436e8861.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Stair.png"
-dest_files=["res://.godot/imported/Stair.png-8eb92aea8a2c8c9227fe871e6e8ef253.ctex"]
+source_file="res://assets/textures/Traps/Arrow.png"
+dest_files=["res://.godot/imported/Arrow.png-6cabdc598c6df7be3df1f8d7436e8861.ctex"]
 
 [params]
 

@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjxs0p2nwnuwj"]
+
+[ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_nlqec"]
+[ext_resource type="Theme" uid="uid://bgyplibccu45i" path="res://resources/settings_theme.tres" id="2_368el"]
+[ext_resource type="FontFile" uid="uid://dimaxnee30ly7" path="res://assets/fonts/PixelOperator8.ttf" id="2_b4s6m"]
+
+[node name="SettingsMenu" type="Popup"]
+size = Vector2i(320, 180)
+visible = true
+min_size = Vector2i(320, 180)
+script = ExtResource("1_nlqec")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.327398, 0.474581, 0.579181, 1)
+
+[node name="SettingsTabs" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_368el")
+
+[node name="Graphics" type="TabBar" parent="SettingsTabs"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsTabs/Graphics"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GraphicsSettings" type="GridContainer" parent="SettingsTabs/Graphics/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DisplayMode" type="Label" parent="SettingsTabs/Graphics/MarginContainer/GraphicsSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b4s6m")
+theme_override_font_sizes/font_size = 8
+text = "Display Mode"
+
+[node name="DisplayModeDD" type="OptionButton" parent="SettingsTabs/Graphics/MarginContainer/GraphicsSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b4s6m")
+theme_override_font_sizes/font_size = 8
+item_count = 2
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+
+[node name="Audio" type="TabBar" parent="SettingsTabs"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsTabs/Audio"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AudioSettings" type="GridContainer" parent="SettingsTabs/Audio/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Master" type="Label" parent="SettingsTabs/Audio/MarginContainer/AudioSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b4s6m")
+theme_override_font_sizes/font_size = 8
+text = "Master"
+
+[node name="MasterAudio" type="HSlider" parent="SettingsTabs/Audio/MarginContainer/AudioSettings"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -80.0
+max_value = 0.0
+ticks_on_borders = true
+
+[node name="Music" type="Label" parent="SettingsTabs/Audio/MarginContainer/AudioSettings"]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicAudio" type="HSlider" parent="SettingsTabs/Audio/MarginContainer/AudioSettings"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+value = -14.0
+
+[node name="SFX" type="Label" parent="SettingsTabs/Audio/MarginContainer/AudioSettings"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXAudio" type="HSlider" parent="SettingsTabs/Audio/MarginContainer/AudioSettings"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[connection signal="item_selected" from="SettingsTabs/Graphics/MarginContainer/GraphicsSettings/DisplayModeDD" to="." method="_on_display_mode_dd_item_selected"]
+[connection signal="value_changed" from="SettingsTabs/Audio/MarginContainer/AudioSettings/MasterAudio" to="." method="_on_master_audio_value_changed"]
+[connection signal="value_changed" from="SettingsTabs/Audio/MarginContainer/AudioSettings/MusicAudio" to="." method="_on_music_audio_value_changed"]
+[connection signal="value_changed" from="SettingsTabs/Audio/MarginContainer/AudioSettings/SFXAudio" to="." method="_on_sfx_audio_value_changed"]
