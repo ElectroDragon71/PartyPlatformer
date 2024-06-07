@@ -5,9 +5,11 @@
 [ext_resource type="FontFile" uid="uid://dimaxnee30ly7" path="res://assets/fonts/PixelOperator8.ttf" id="2_b4s6m"]
 
 [node name="SettingsMenu" type="Popup"]
+initial_position = 2
 size = Vector2i(320, 180)
 visible = true
 min_size = Vector2i(320, 180)
+content_scale_stretch = 1
 script = ExtResource("1_nlqec")
 
 [node name="Background" type="ColorRect" parent="."]
