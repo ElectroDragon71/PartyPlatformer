@@ -6,10 +6,9 @@
 
 [node name="SettingsMenu" type="Popup"]
 initial_position = 2
-size = Vector2i(320, 180)
+size = Vector2i(300, 160)
 visible = true
-min_size = Vector2i(320, 180)
-content_scale_stretch = 1
+min_size = Vector2i(300, 160)
 script = ExtResource("1_nlqec")
 
 [node name="Background" type="ColorRect" parent="."]

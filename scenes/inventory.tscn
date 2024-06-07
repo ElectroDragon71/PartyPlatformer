@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbetawyfqtbyb"]
+
+[ext_resource type="Theme" uid="uid://bgyplibccu45i" path="res://resources/settings_theme.tres" id="1_xyjld"]
+
+[node name="Inventory" type="Popup"]
+title = "Items"
+position = Vector2i(20, 0)
+size = Vector2i(280, 160)
+visible = true
+min_size = Vector2i(280, 160)
+keep_title_visible = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.571899, 0.299997, 0.82931, 1)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xyjld")
+
+[node name="Platform" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Platform"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="Shooting" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
