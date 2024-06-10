@@ -2,7 +2,7 @@ extends Node
 
 
 func toggle_fullscreen(value):
-	# 0 is windowed, 3 is fullscreen
+	# 0 is windowed, 4 is fullscreen
 	DisplayServer.window_set_mode(value)
 	Save.game_data.fullscreen_on
 

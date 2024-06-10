@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name MultiplayerPlayer extends CharacterBody2D
 
 # Multiplayer
 

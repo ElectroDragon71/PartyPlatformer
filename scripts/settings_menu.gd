@@ -11,7 +11,7 @@ extends Popup
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	display_mode_dd.select(1 if Save.game_data.fullscreen_on else 0)
-	GlobalSettings.toggle_fullscreen(3 if Save.game_data.fullscreen_on else 0)
+	GlobalSettings.toggle_fullscreen(4 if Save.game_data.fullscreen_on else 0)
 	
 	master_audio.value = Save.game_data.master_vol
 	music_audio.value = Save.game_data.music_vol
@@ -20,7 +20,7 @@ func _ready():
 
 
 func _on_display_mode_dd_item_selected(index):
-	GlobalSettings.toggle_fullscreen(3 if index == 1 else 0)
+	GlobalSettings.toggle_fullscreen(4 if index == 1 else 0)
 
 
 func _on_master_audio_value_changed(value):

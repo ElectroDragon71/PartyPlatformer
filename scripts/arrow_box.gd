@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends AnimatableBody2D
 
 @export var arrow = preload("res://scenes/arrow.tscn")
 

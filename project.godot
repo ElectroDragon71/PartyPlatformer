@@ -34,6 +34,7 @@ window/size/always_on_top=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [input]
 
@@ -70,8 +71,11 @@ up={
 
 [layer_names]
 
-2d_physics/layer_1="Normal"
+2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
+2d_physics/layer_3="Items"
+2d_physics/layer_4="Killzone"
+2d_physics/layer_5="NoPlacement"
 
 [rendering]
 

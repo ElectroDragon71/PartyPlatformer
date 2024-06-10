@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://wvfrjj6lnd7"]
+
+[ext_resource type="Script" path="res://scripts/check_placement.gd" id="1_vv2pc"]
+
+[node name="CheckPlacement" type="Area2D"]
+collision_layer = 4
+collision_mask = 21
+script = ExtResource("1_vv2pc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

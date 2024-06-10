@@ -12,7 +12,7 @@ var respawn_point = Vector2(40,-30)
 func become_host():
 	print("Starting Host")
 	
-	_players_spawn_node = get_tree().root.get_node("Game/Players")
+	_players_spawn_node = get_tree().root.get_node("LevelMenu/Players")
 	var server_peer = ENetMultiplayerPeer.new()
 	server_peer.create_server(SERVER_PORT)
 	

@@ -4,7 +4,7 @@ extends Control
 
 
 func _on_host_pressed():
-	var game_scene = load("res://scenes/game.tscn").instantiate()
+	var game_scene = load("res://scenes/level_menu.tscn").instantiate()
 	get_tree().root.add_child(game_scene)
 	self.hide()
 	
@@ -13,7 +13,7 @@ func _on_host_pressed():
 
 
 func _on_join_pressed():
-	var game_scene = load("res://scenes/game.tscn").instantiate()
+	var game_scene = load("res://scenes/level_menu.tscn").instantiate()
 	get_tree().root.add_child(game_scene)
 	self.hide()
 	MultiplayerManager.join_as_client()

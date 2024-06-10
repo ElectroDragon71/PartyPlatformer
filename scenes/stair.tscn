@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://do8tqo3t43nt8"]
+[gd_scene load_steps=4 format=3 uid="uid://do8tqo3t43nt8"]
 
+[ext_resource type="Script" path="res://scripts/stair.gd" id="1_tu7o1"]
 [ext_resource type="Texture2D" uid="uid://c6xdom4i232rx" path="res://assets/textures/Traps/Stair.png" id="1_uigtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0b5q"]
 size = Vector2(16, 16)
 
-[node name="Stair" type="StaticBody2D"]
+[node name="Stair" type="AnimatableBody2D"]
+script = ExtResource("1_tu7o1")
+placeable_scene_path = ""
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_uigtm")

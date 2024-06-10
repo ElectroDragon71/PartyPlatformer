@@ -6,7 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h82uj"]
 size = Vector2(16, 16)
 
-[node name="ArrowBox" type="StaticBody2D"]
+[node name="ArrowBox" type="AnimatableBody2D"]
+collision_layer = 4
 script = ExtResource("1_m0ac6")
 
 [node name="ArrowSpawn" type="Node2D" parent="."]
