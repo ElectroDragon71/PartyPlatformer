@@ -5,9 +5,9 @@ class_name ItemPlacer extends Node2D
 
 var world: Node2D:
 	get:
-		return inventory.get_parent()
+		return player.get_parent().get_parent()
 
-var item_to_place: Item:
+var item_to_place: String:
 	get:
 		return item_to_place
 	set(item):
@@ -16,6 +16,7 @@ var item_to_place: Item:
 		_create_placement_preview()
 
 var preview_instance: Item
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -28,6 +29,13 @@ func _physics_process(delta):
 		var rounded_position = Vector2(int(round(mouse_position.x)), int(round(mouse_position.y)))
 		preview_instance.global_position = rounded_position
 
+func _unhandled_input(event):
+	if preview_instance == null:
+		return
+	
+	if Input.is_action_just_pressed("place_item"):
+		_place_item()
+
 func _clear_preview():
 	if preview_instance == null:
 		return
@@ -35,11 +43,11 @@ func _clear_preview():
 	preview_instance.queue_free()
 
 func _create_placement_preview():
-	if item_to_place == null:
+	if item_to_place == "":
 		return
 	
 	#create the preview
-	var preview_scene = load(item_to_place.placeable_scene_path)
+	var preview_scene = load(item_to_place)
 	preview_instance = preview_scene.instantiate() as Item
 	preview_instance.set_collision_enabled(false)
 	world.add_child(preview_instance)
@@ -55,4 +63,4 @@ func _place_item():
 	preview_instance.set_collision_enabled(true)
 	preview_instance.previewing = false
 	preview_instance = null
-	item_to_place = null
+	item_to_place = ""

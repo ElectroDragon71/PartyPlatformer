@@ -1,4 +1,7 @@
 class_name MultiplayerPlayer extends CharacterBody2D
+# Item Placement
+@onready var item_placer = $ItemPlacer
+
 
 # Multiplayer
 

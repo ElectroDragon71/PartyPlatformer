@@ -1,13 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bta6xg437nfmu"]
+[gd_scene load_steps=12 format=3 uid="uid://bta6xg437nfmu"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_w4iys"]
+[ext_resource type="PackedScene" uid="uid://dxlvdtm8hijjm" path="res://scenes/level_manager.tscn" id="1_m43ad"]
 [ext_resource type="PackedScene" uid="uid://bw0fxkbbk4wkc" path="res://scenes/tile_map.tscn" id="2_n4jy2"]
 [ext_resource type="PackedScene" uid="uid://da6jsq5adnbwr" path="res://scenes/arrow_box.tscn" id="3_br134"]
 [ext_resource type="PackedScene" uid="uid://dwpnea18mxani" path="res://scenes/coin.tscn" id="4_i04xp"]
 [ext_resource type="PackedScene" uid="uid://qyvcnvok4wsp" path="res://scenes/killzone.tscn" id="5_d2owk"]
 [ext_resource type="PackedScene" uid="uid://do8tqo3t43nt8" path="res://scenes/stair.tscn" id="6_mwli7"]
 [ext_resource type="PackedScene" uid="uid://chq8an0s7l6k4" path="res://scenes/platform.tscn" id="7_lavw6"]
-[ext_resource type="PackedScene" uid="uid://dbetawyfqtbyb" path="res://scenes/inventory.tscn" id="8_xfnua"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_idpar"]
 
@@ -51,9 +50,8 @@ _data = {
 
 [node name="LevelMenu" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="."]
+[node name="LevelManager" parent="." instance=ExtResource("1_m43ad")]
 unique_name_in_owner = true
-script = ExtResource("1_w4iys")
 
 [node name="TileMap" parent="." instance=ExtResource("2_n4jy2")]
 layer_0/name = "Ground"
@@ -105,6 +103,3 @@ libraries = {
 "": SubResource("AnimationLibrary_g1j3x")
 }
 autoplay = "move"
-
-[node name="Inventory" parent="." instance=ExtResource("8_xfnua")]
-visible = false

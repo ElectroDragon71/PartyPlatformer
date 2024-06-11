@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbetawyfqtbyb"]
+[gd_scene load_steps=3 format=3 uid="uid://dbetawyfqtbyb"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_r10k0"]
 [ext_resource type="Theme" uid="uid://bgyplibccu45i" path="res://resources/settings_theme.tres" id="1_xyjld"]
-[ext_resource type="PackedScene" uid="uid://uuc46qbb5h8h" path="res://scenes/item_placer.tscn" id="2_mjh5x"]
 
 [node name="Inventory" type="Popup"]
 title = "Items"
@@ -12,8 +11,6 @@ visible = true
 min_size = Vector2i(280, 160)
 keep_title_visible = true
 script = ExtResource("1_r10k0")
-
-[node name="ItemPlacer" parent="." instance=ExtResource("2_mjh5x")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

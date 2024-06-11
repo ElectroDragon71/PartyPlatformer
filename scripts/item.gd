@@ -5,6 +5,7 @@ const SHADER_PREVIEW = "PREVIEW"
 const SHADER_PLACEABLE = "PLACEABLE"
 
 @onready var sprite = $Sprite2D
+@onready var cpoly = $CollisionPolygon2D
 
 var previewing: bool:
 	get:
@@ -24,10 +25,11 @@ var can_place: bool:
 func _ready():
 	sprite.material = SHADER.duplicate()
 
+func set_collision_enabled(enabled):
+	call_deferred("_deferred_set_collision_enabled", enabled)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _deferred_set_collision_enabled(enabled):
+	cpoly.disabled = !enabled
 
 func _update_shader():
 	if sprite.material == null:

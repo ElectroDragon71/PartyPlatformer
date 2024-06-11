@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk4wbvdbit0q5"]
+[gd_scene load_steps=21 format=3 uid="uid://bk4wbvdbit0q5"]
 
 [ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_fsyi5"]
 [ext_resource type="Shape2D" uid="uid://dhhosieefl2f3" path="res://resources/player_standing_cshape.tres" id="3_4ag6m"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dt1na3ijqv5a2" path="res://assets/textures/Player/Slime/SlimeFall.png" id="6_xxlw5"]
 [ext_resource type="Texture2D" uid="uid://ckd5hnn377mvy" path="res://assets/textures/Player/Slime/SlimeJump.png" id="7_g6w33"]
 [ext_resource type="Texture2D" uid="uid://dfn372026m1ty" path="res://assets/textures/Player/Slime/SlimeWalk.png" id="8_baakj"]
+[ext_resource type="PackedScene" uid="uid://dbetawyfqtbyb" path="res://scenes/inventory.tscn" id="9_4kpmk"]
 [ext_resource type="Texture2D" uid="uid://ccxk63p6ill4d" path="res://assets/textures/Player/Slime/SlimeRun.png" id="9_r6rtj"]
+[ext_resource type="PackedScene" uid="uid://uuc46qbb5h8h" path="res://scenes/item_placer.tscn" id="10_1gua5"]
 
 [sub_resource type="Animation" id="Animation_wdjxc"]
 length = 0.001
@@ -485,5 +487,12 @@ replication_config = SubResource("SceneReplicationConfig_b5p5h")
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Inventory" parent="." node_paths=PackedStringArray("item_placer") instance=ExtResource("9_4kpmk")]
+item_placer = NodePath("../ItemPlacer")
+
+[node name="ItemPlacer" parent="." node_paths=PackedStringArray("player", "inventory") instance=ExtResource("10_1gua5")]
+player = NodePath("..")
+inventory = NodePath("../Inventory")
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_respawn"]

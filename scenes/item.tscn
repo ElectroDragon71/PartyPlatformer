@@ -23,4 +23,6 @@ script = ExtResource("1_fmw1j")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_a6kvy")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
 [connection signal="placement_allowed_changed" from="CheckPlacement" to="." method="_on_placement_allowed_changed"]

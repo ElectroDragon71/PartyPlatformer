@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var game_manager = %GameManager
+@onready var game_manager = %LevelManager
 @onready var pickup_animation = $PickupAnimation
 
 func _on_body_entered(_body):
