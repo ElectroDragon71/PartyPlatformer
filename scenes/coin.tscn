@@ -217,6 +217,7 @@ _data = {
 }
 
 [node name="Coin" type="Area2D"]
+collision_layer = 64
 collision_mask = 2
 script = ExtResource("1_psp5u")
 

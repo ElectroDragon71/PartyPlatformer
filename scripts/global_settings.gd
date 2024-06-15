@@ -4,7 +4,10 @@ extends Node
 func toggle_fullscreen(value):
 	# 0 is windowed, 4 is fullscreen
 	DisplayServer.window_set_mode(value)
-	Save.game_data.fullscreen_on
+	if value == 4:
+		Save.game_data.fullscreen_on = true
+	if value == 0:
+		Save.game_data.fullscreen_on = false
 
 func update_master_vol(vol):
 	AudioServer.set_bus_volume_db(0, vol)

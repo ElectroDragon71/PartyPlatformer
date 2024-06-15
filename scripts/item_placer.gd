@@ -1,7 +1,6 @@
 class_name ItemPlacer extends Node2D
 
 @export var player: MultiplayerPlayer
-@export var inventory: Inventory
 
 var world: Node2D:
 	get:
@@ -32,8 +31,8 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	if preview_instance == null:
 		return
-	
 	if Input.is_action_just_pressed("place_item"):
+		print("attempting to place item")
 		_place_item()
 
 func _clear_preview():
@@ -47,6 +46,7 @@ func _create_placement_preview():
 		return
 	
 	#create the preview
+	print("generating preview instance")
 	var preview_scene = load(item_to_place)
 	preview_instance = preview_scene.instantiate() as Item
 	preview_instance.set_collision_enabled(false)
@@ -58,8 +58,10 @@ func _place_item():
 		return
 	
 	if not preview_instance.can_place:
+		print("can't place item")
 		return
 	
+	print("placing item")
 	preview_instance.set_collision_enabled(true)
 	preview_instance.previewing = false
 	preview_instance = null

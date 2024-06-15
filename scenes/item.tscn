@@ -1,13 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://band1wgbjucku"]
 
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_fmw1j"]
+[ext_resource type="Material" uid="uid://ligtbhxcwxt2" path="res://resources/item_material.tres" id="1_qd3fo"]
 [ext_resource type="Shader" path="res://resources/shaders/item.gdshader" id="1_s1qw3"]
 [ext_resource type="PackedScene" uid="uid://wvfrjj6lnd7" path="res://scenes/check_placement.tscn" id="3_hr0qw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdhok"]
-shader = ExtResource("1_s1qw3")
-shader_parameter/PREVIEW = false
-shader_parameter/PLACEABLE = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6kvy"]
 shader = ExtResource("1_s1qw3")
@@ -15,7 +11,10 @@ shader_parameter/PREVIEW = false
 shader_parameter/PLACEABLE = true
 
 [node name="Item" type="AnimatableBody2D"]
-material = SubResource("ShaderMaterial_cdhok")
+z_index = 5
+material = ExtResource("1_qd3fo")
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_fmw1j")
 
 [node name="CheckPlacement" parent="." instance=ExtResource("3_hr0qw")]

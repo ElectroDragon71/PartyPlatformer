@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_stairs_button_pressed():
+	print("pressed stair button")
 	item_placer.item_to_place = "res://scenes/stair.tscn"
 
 
