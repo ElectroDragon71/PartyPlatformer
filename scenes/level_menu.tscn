@@ -1,14 +1,27 @@
-[gd_scene load_steps=12 format=3 uid="uid://bta6xg437nfmu"]
+[gd_scene load_steps=15 format=3 uid="uid://bta6xg437nfmu"]
 
 [ext_resource type="PackedScene" uid="uid://dxlvdtm8hijjm" path="res://scenes/level_manager.tscn" id="1_m43ad"]
 [ext_resource type="PackedScene" uid="uid://bw0fxkbbk4wkc" path="res://scenes/tile_map.tscn" id="2_n4jy2"]
 [ext_resource type="PackedScene" uid="uid://da6jsq5adnbwr" path="res://scenes/arrow_box.tscn" id="3_br134"]
+[ext_resource type="Shader" path="res://resources/shaders/item.gdshader" id="4_35ayb"]
 [ext_resource type="PackedScene" uid="uid://dwpnea18mxani" path="res://scenes/coin.tscn" id="4_i04xp"]
 [ext_resource type="PackedScene" uid="uid://qyvcnvok4wsp" path="res://scenes/killzone.tscn" id="5_d2owk"]
 [ext_resource type="PackedScene" uid="uid://do8tqo3t43nt8" path="res://scenes/stair.tscn" id="6_mwli7"]
 [ext_resource type="PackedScene" uid="uid://chq8an0s7l6k4" path="res://scenes/platform.tscn" id="7_lavw6"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7thog"]
+resource_local_to_scene = true
+shader = ExtResource("4_35ayb")
+shader_parameter/PREVIEW = false
+shader_parameter/PLACEABLE = true
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_idpar"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_54lpf"]
+resource_local_to_scene = true
+shader = ExtResource("4_35ayb")
+shader_parameter/PREVIEW = false
+shader_parameter/PLACEABLE = true
 
 [sub_resource type="Animation" id="Animation_jc34h"]
 length = 0.001
@@ -71,6 +84,7 @@ limit_bottom = 230
 position_smoothing_enabled = true
 
 [node name="ArrowBox" parent="." instance=ExtResource("3_br134")]
+material = SubResource("ShaderMaterial_7thog")
 position = Vector2(692, 158)
 
 [node name="Coin2" parent="." instance=ExtResource("4_i04xp")]
@@ -85,9 +99,10 @@ shape = SubResource("WorldBoundaryShape2D_idpar")
 [node name="Platforms" type="Node" parent="."]
 
 [node name="Stair" parent="." instance=ExtResource("6_mwli7")]
+material = SubResource("ShaderMaterial_54lpf")
 position = Vector2(586, 43)
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/multiplayer_player.tscn")
 spawn_path = NodePath("../Players")
 spawn_limit = 3

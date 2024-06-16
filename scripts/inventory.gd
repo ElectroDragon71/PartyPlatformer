@@ -16,7 +16,9 @@ func _process(delta):
 func _on_stairs_button_pressed():
 	print("pressed stair button")
 	item_placer.item_to_place = "res://scenes/stair.tscn"
+	visible = false
 
 
 func _on_arrow_box_button_pressed():
 	item_placer.item_to_place = "res://scenes/arrow_box.tscn"
+	visible = false

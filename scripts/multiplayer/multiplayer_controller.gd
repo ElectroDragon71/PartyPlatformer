@@ -16,13 +16,12 @@ var alive = true
 func mark_dead():
 	print("Mark Player Dead")
 	alive = false
-	$CollisionShape2D.set_deferred("disabled", true)
 	$RespawnTimer.start()
 
 func _respawn():
 	print("Respawned")
 	position = MultiplayerManager.respawn_point
-	$CollisionShape2D.set_deferred("disabled", false)
+	_set_alive()
 
 func _set_alive():
 	print("alive again")
@@ -39,7 +38,7 @@ func _set_alive():
 ## be adjusted to fit your specific needs
 
 ## The four possible character states and the character's current state
-enum {IDLE, WALK, SPRINT, JUMP, FALL, WALL_SLIDE}
+enum {IDLE, WALK, SPRINT, JUMP, FALL, WALL_SLIDE, DEAD}
 ## The values for the jump direction, default is UP or -1
 enum JUMP_DIRECTIONS {UP = -1, DOWN = 1}
 
@@ -128,8 +127,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if %PlayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-		if not alive && is_on_floor():
-			_set_alive()
 		physics_tick(delta)
 
 
@@ -137,9 +134,10 @@ func _physics_process(delta: float) -> void:
 ## and any logic that needs to be done on the [param _physics_process] tick
 func physics_tick(delta: float) -> void:
 	var inputs: Dictionary = get_inputs()
-	handle_jump(delta, inputs.input_direction, inputs.jump_strength, inputs.jump_pressed, inputs.jump_released)
-	handle_sprint(inputs.sprint_strength)
-	handle_velocity(delta, inputs.input_direction)
+	if alive:
+		handle_jump(delta, inputs.input_direction, inputs.jump_strength, inputs.jump_pressed, inputs.jump_released)
+		handle_sprint(inputs.sprint_strength)
+		handle_velocity(delta, inputs.input_direction)
 	
 	manage_animations()
 	manage_state()
@@ -152,21 +150,24 @@ func physics_tick(delta: float) -> void:
 
 ## Manages the character's current state based on the current velocity vector
 func manage_state() -> void:
-	if velocity.y == 0:
-		if velocity.x == 0:
-			state = IDLE
-		else:
-			if sprinting == true:
-				state = SPRINT
-			else:
-				state = WALK
-	elif velocity.y < 0:
-		state = JUMP
+	if alive == false:
+		state = DEAD
 	else:
-		if can_wall_jump and is_on_wall_only() and get_input_direction().x != 0:
-			state = WALL_SLIDE
+		if velocity.y == 0:
+			if velocity.x == 0:
+				state = IDLE
+			else:
+				if sprinting == true:
+					state = SPRINT
+				else:
+					state = WALK
+		elif velocity.y < 0:
+			state = JUMP
 		else:
-			state = FALL
+			if can_wall_jump and is_on_wall_only() and get_input_direction().x != 0:
+				state = WALL_SLIDE
+			else:
+				state = FALL
 
 
 ## Manages the character's animations based on the current state and [param PLAYER_SPRITE] direction based on
@@ -189,6 +190,8 @@ func manage_animations() -> void:
 			ANIMATION_PLAYER.play("fall")
 		WALL_SLIDE:
 			ANIMATION_PLAYER.play("fall")
+		DEAD:
+			ANIMATION_PLAYER.play("died")
 
 
 ## Gets the strength and status of the mapped actions

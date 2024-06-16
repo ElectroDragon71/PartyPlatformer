@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bk4wbvdbit0q5"]
+[gd_scene load_steps=23 format=3 uid="uid://bk4wbvdbit0q5"]
 
 [ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_fsyi5"]
 [ext_resource type="Shape2D" uid="uid://dhhosieefl2f3" path="res://resources/player_standing_cshape.tres" id="3_4ag6m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dt1na3ijqv5a2" path="res://assets/textures/Player/Slime/SlimeFall.png" id="6_xxlw5"]
 [ext_resource type="Texture2D" uid="uid://ckd5hnn377mvy" path="res://assets/textures/Player/Slime/SlimeJump.png" id="7_g6w33"]
 [ext_resource type="Texture2D" uid="uid://dfn372026m1ty" path="res://assets/textures/Player/Slime/SlimeWalk.png" id="8_baakj"]
+[ext_resource type="Texture2D" uid="uid://bpnxbf6gljdng" path="res://assets/textures/Player/Slime/SlimeDead.png" id="9_3opht"]
 [ext_resource type="PackedScene" uid="uid://dbetawyfqtbyb" path="res://scenes/inventory.tscn" id="9_4kpmk"]
 [ext_resource type="Texture2D" uid="uid://ccxk63p6ill4d" path="res://assets/textures/Player/Slime/SlimeRun.png" id="9_r6rtj"]
 [ext_resource type="PackedScene" uid="uid://uuc46qbb5h8h" path="res://scenes/item_placer.tscn" id="10_1gua5"]
@@ -435,11 +436,63 @@ tracks/3/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_e8g0h"]
+resource_name = "died"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_3opht")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xndv2"]
 _data = {
 "RESET": SubResource("Animation_wdjxc"),
 "crouch": SubResource("Animation_oq6te"),
 "crouch_walk": SubResource("Animation_lirtb"),
+"died": SubResource("Animation_e8g0h"),
 "fall": SubResource("Animation_g7i2b"),
 "idle": SubResource("Animation_suldd"),
 "jump": SubResource("Animation_x1mjn"),
@@ -486,13 +539,18 @@ unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_b5p5h")
 
 [node name="RespawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RespawnTimer2" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="Inventory" parent="." node_paths=PackedStringArray("item_placer") instance=ExtResource("9_4kpmk")]
+visible = false
 item_placer = NodePath("../ItemPlacer")
 
 [node name="ItemPlacer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_1gua5")]
 player = NodePath("..")
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_respawn"]
+[connection signal="timeout" from="RespawnTimer2" to="." method="_respawn"]
