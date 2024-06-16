@@ -8,7 +8,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("ui_accept"):
+		popup_centered()
+	
 
 
 func _on_stairs_button_pressed():
@@ -17,4 +19,4 @@ func _on_stairs_button_pressed():
 
 
 func _on_arrow_box_button_pressed():
-	pass # Replace with function body.
+	item_placer.item_to_place = "res://scenes/arrow_box.tscn"

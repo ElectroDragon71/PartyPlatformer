@@ -1,4 +1,4 @@
-extends AnimatableBody2D
+extends Item
 
 @export var arrow = preload("res://scenes/arrow.tscn")
 
@@ -6,12 +6,15 @@ extends AnimatableBody2D
 
 const MAX_DELAY = 100
 var delay = MAX_DELAY
-
+var timer_started = false
 func _ready():
-	timer.start()
+	super._ready()
 
 func _process(delta):
 	rotate(1 * delta)
+	if timer_started == false && previewing == false:
+		timer.start()
+		timer_started = true
 	
 
 func fire():

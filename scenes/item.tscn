@@ -7,21 +7,24 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a6kvy"]
 shader = ExtResource("1_s1qw3")
-shader_parameter/PREVIEW = false
+shader_parameter/PREVIEW = true
 shader_parameter/PLACEABLE = true
 
 [node name="Item" type="AnimatableBody2D"]
-z_index = 5
+z_index = 8
 material = ExtResource("1_qd3fo")
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_fmw1j")
 
 [node name="CheckPlacement" parent="." instance=ExtResource("3_hr0qw")]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 8
 material = SubResource("ShaderMaterial_a6kvy")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 
 [connection signal="placement_allowed_changed" from="CheckPlacement" to="." method="_on_placement_allowed_changed"]

@@ -1,6 +1,6 @@
 class_name CheckPlacement extends Area2D
 
-signal placement_allowed_changed(allowed)
+signal placement_allowed_changed(allowed: bool)
 
 var placement_allowed: bool = true:
 	get:

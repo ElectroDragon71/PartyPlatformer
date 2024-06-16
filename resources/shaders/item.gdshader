@@ -3,10 +3,6 @@ shader_type canvas_item;
 uniform bool PREVIEW = false;
 uniform bool PLACEABLE = true;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
 void fragment() {
 	vec4 previous_color = texture(TEXTURE, UV);
 	vec4 white_color = vec4(1.0, 1.0, 1.0, previous_color.a);
@@ -14,14 +10,14 @@ void fragment() {
 	
 	if(PREVIEW == true){
 		if(PLACEABLE == false){
-			new_color.r = 0.4;
-			new_color.g = new_color.g / 1.5;
-			new_color.b = new_color.b / 1.5;
+			new_color.r = 0.5;
+			new_color.g = new_color.g / 2.5;
+			new_color.b = new_color.b / 2.5;
 		}else{
 			new_color = previous_color;
 		}
 		if(new_color.a == 1.0){
-			new_color.a = 0.5;
+			new_color.a = 0.6;
 		}
 	}else{
 		new_color = previous_color;

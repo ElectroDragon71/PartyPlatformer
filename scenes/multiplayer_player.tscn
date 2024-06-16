@@ -462,7 +462,7 @@ properties/3/spawn = true
 properties/3/replication_mode = 1
 
 [node name="MultiplayerPlayer" type="CharacterBody2D"]
-z_index = 8
+z_index = 10
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_fsyi5")

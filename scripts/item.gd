@@ -26,7 +26,9 @@ var can_place: bool = true:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("item ready")
-	sprite.material = SHADER.duplicate()
+	var cp = get_node("CheckPlacement")
+	cp.placement_allowed_changed.connect(_on_placement_allowed_changed)
+	#sprite.material = SHADER.duplicate()
 
 func set_collision_enabled(enabled):
 	call_deferred("_deferred_set_collision_enabled", enabled)

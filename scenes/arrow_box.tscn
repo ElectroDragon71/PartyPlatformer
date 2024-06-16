@@ -1,24 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://da6jsq5adnbwr"]
+[gd_scene load_steps=5 format=3 uid="uid://da6jsq5adnbwr"]
 
+[ext_resource type="Material" uid="uid://ligtbhxcwxt2" path="res://resources/item_material.tres" id="1_euw0r"]
 [ext_resource type="Script" path="res://scripts/arrow_box.gd" id="1_m0ac6"]
 [ext_resource type="Texture2D" uid="uid://drk3l2ys3mldk" path="res://assets/textures/Traps/ArrowBox.png" id="1_yx0kr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h82uj"]
-size = Vector2(16, 16)
+[ext_resource type="PackedScene" uid="uid://wvfrjj6lnd7" path="res://scenes/check_placement.tscn" id="2_qnyxj"]
 
 [node name="ArrowBox" type="AnimatableBody2D"]
+z_index = 8
+material = ExtResource("1_euw0r")
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_m0ac6")
 
-[node name="ArrowSpawn" type="Node2D" parent="."]
-position = Vector2(8, 0)
+[node name="CheckPlacement" parent="." instance=ExtResource("2_qnyxj")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CheckPlacement"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_euw0r")
 texture = ExtResource("1_yx0kr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_h82uj")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="ArrowSpawn" type="Node2D" parent="."]
+position = Vector2(8, 0)
 
 [node name="Timer" type="Timer" parent="."]
 

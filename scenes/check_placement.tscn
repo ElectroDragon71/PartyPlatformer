@@ -7,8 +7,6 @@ collision_layer = 32
 collision_mask = 21
 script = ExtResource("1_vv2pc")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
