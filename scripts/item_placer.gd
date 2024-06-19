@@ -22,13 +22,13 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	if preview_instance != null:
 		var mouse_position = get_global_mouse_position()
 		var rounded_position = Vector2(int(round(mouse_position.x)), int(round(mouse_position.y)))
 		preview_instance.global_position = rounded_position
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if preview_instance == null:
 		return
 	if Input.is_action_just_pressed("place_item"):
@@ -50,7 +50,7 @@ func _create_placement_preview():
 	var preview_scene = load(item_to_place)
 	preview_instance = preview_scene.instantiate() as Item
 	preview_instance.set_collision_enabled(false)
-	world.add_child(preview_instance)
+	world.add_child(preview_instance, true)
 	preview_instance.previewing = true
 
 func _place_item():

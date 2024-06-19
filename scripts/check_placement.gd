@@ -24,15 +24,15 @@ func _check_collisions():
 	print("colliding area: " + str(colliding_area))
 	placement_allowed = colliding_area
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	print("entered")
 	_check_collisions()
 
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	placement_allowed = false
 
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	placement_allowed = true

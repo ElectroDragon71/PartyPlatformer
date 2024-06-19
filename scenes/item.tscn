@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://band1wgbjucku"]
+[gd_scene load_steps=6 format=3 uid="uid://band1wgbjucku"]
 
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_fmw1j"]
 [ext_resource type="Material" uid="uid://ligtbhxcwxt2" path="res://resources/item_material.tres" id="1_qd3fo"]
@@ -9,11 +9,6 @@
 shader = ExtResource("1_s1qw3")
 shader_parameter/PREVIEW = true
 shader_parameter/PLACEABLE = true
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xc3sd"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
 
 [node name="Item" type="AnimatableBody2D"]
 z_index = 8
@@ -31,8 +26,5 @@ material = SubResource("ShaderMaterial_a6kvy")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_xc3sd")
 
 [connection signal="placement_allowed_changed" from="CheckPlacement" to="." method="_on_placement_allowed_changed"]
