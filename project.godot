@@ -25,6 +25,7 @@ Music="*res://scenes/music.tscn"
 MultiplayerManager="*res://scripts/multiplayer/multiplayer_manager.gd"
 GlobalSettings="*res://scripts/global_settings.gd"
 Save="*res://scripts/save.gd"
+NodePaths="*res://scripts/node_paths.gd"
 
 [display]
 

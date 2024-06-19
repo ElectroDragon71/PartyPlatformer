@@ -6,6 +6,10 @@ var world: Node2D:
 	get:
 		return player.get_parent().get_parent()
 
+var item_node: Node2D:
+	get:
+		return world.get_node("Items").get_node(str(player.player_id))
+
 var item_to_place: String:
 	get:
 		return item_to_place
@@ -50,7 +54,7 @@ func _create_placement_preview():
 	var preview_scene = load(item_to_place)
 	preview_instance = preview_scene.instantiate() as Item
 	preview_instance.set_collision_enabled(false)
-	world.add_child(preview_instance, true)
+	item_node.add_child(preview_instance, true)
 	preview_instance.previewing = true
 
 func _place_item():

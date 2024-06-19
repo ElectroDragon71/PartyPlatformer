@@ -41,11 +41,13 @@ shape = SubResource("WorldBoundaryShape2D_idpar")
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/multiplayer_player.tscn")
 spawn_path = NodePath("../Players")
-spawn_limit = 3
+spawn_limit = 12
 
 [node name="Players" type="Node2D" parent="."]
 position = Vector2(-289, 149)
 
 [node name="ItemSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/player_items.tscn")
+spawn_path = NodePath("../Items")
 
 [node name="Items" type="Node2D" parent="."]

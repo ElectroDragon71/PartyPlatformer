@@ -4,8 +4,10 @@ const SERVER_PORT = 8080
 const SERVER_IP = "127.0.0.1"
 
 var multiplayer_scene = preload("res://scenes/multiplayer_player.tscn")
+var player_items_scene = preload("res://scenes/player_items.tscn")
 
 var _players_spawn_node
+var _items_spawn_node
 
 var respawn_point = Vector2(40,-30)
 
@@ -13,6 +15,7 @@ func become_host():
 	print("Starting Host")
 	
 	_players_spawn_node = get_tree().root.get_node("LevelMenu/Players")
+	_items_spawn_node = get_tree().root.get_node("LevelMenu/Items")
 	var server_peer = ENetMultiplayerPeer.new()
 	server_peer.create_server(SERVER_PORT)
 	
@@ -46,7 +49,12 @@ func _add_player_to_game(id: int):
 	player_to_add.player_id = id
 	player_to_add.name = str(id)
 	
+	var player_items_to_add = player_items_scene.instantiate()
+	player_items_to_add.name = str(id)
+	
 	_players_spawn_node.add_child(player_to_add, true)
+	
+	_items_spawn_node.add_child(player_items_to_add, true)
 
 func _delete_player(id: int):
 	print("Player %s has left the game" % id)
