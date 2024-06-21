@@ -47,7 +47,9 @@ spawn_limit = 12
 position = Vector2(-289, 149)
 
 [node name="ItemSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/player_items.tscn")
+_spawnable_scenes = PackedStringArray("res://scenes/stair.tscn", "res://scenes/arrow_box.tscn")
 spawn_path = NodePath("../Items")
 
 [node name="Items" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]

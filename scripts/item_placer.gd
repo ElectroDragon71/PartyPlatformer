@@ -8,7 +8,7 @@ var world: Node2D:
 
 var item_node: Node2D:
 	get:
-		return world.get_node("Items").get_node(str(player.player_id))
+		return world.get_node("Items")
 
 var item_to_place: String:
 	get:
