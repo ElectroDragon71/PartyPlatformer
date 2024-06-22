@@ -17,6 +17,8 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_fmw1j")
 
+[node name="ItemSynchronizer" type="MultiplayerSynchronizer" parent="."]
+
 [node name="CheckPlacement" parent="." instance=ExtResource("3_hr0qw")]
 visible = false
 

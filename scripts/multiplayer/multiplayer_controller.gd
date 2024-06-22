@@ -5,11 +5,7 @@ class_name MultiplayerPlayer extends CharacterBody2D
 
 # Multiplayer
 
-@export var player_id := 1:
-	set(id):
-		player_id = id
-		#%PlayerSynchronizer.set_multiplayer_authority(id)
-		
+@export var player_id := 1
 
 var alive = true
 
@@ -120,10 +116,7 @@ var jumping := false
 
 func _enter_tree():
 	%PlayerSynchronizer.set_multiplayer_authority(name.to_int())
-
-func _ready():
-	# %PlayerSynchronizer.set_multiplayer_authority(name.to_int())
-	pass
+	player_id = name.to_int()
 
 func _physics_process(delta: float) -> void:
 	if %PlayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():

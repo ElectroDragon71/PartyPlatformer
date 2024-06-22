@@ -4,6 +4,7 @@ const SHADER = preload("res://resources/shaders/item.gdshader")
 const SHADER_PREVIEW = "PREVIEW"
 const SHADER_PLACEABLE = "PLACEABLE"
 
+@onready var item_sync = $ItemSynchronizer
 @onready var sprite = $Sprite2D
 @onready var cpoly = $CollisionPolygon2D
 

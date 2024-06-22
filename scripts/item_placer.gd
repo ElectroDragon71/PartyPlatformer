@@ -55,6 +55,7 @@ func _create_placement_preview():
 	preview_instance = preview_scene.instantiate() as Item
 	preview_instance.set_collision_enabled(false)
 	item_node.add_child(preview_instance, true)
+	preview_instance.item_sync.set_multiplayer_authority(player.player_id)
 	preview_instance.previewing = true
 
 func _place_item():

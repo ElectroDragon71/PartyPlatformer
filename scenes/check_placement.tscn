@@ -4,7 +4,7 @@
 
 [node name="CheckPlacement" type="Area2D"]
 collision_layer = 32
-collision_mask = 21
+collision_mask = 23
 script = ExtResource("1_vv2pc")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
