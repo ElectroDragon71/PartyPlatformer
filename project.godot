@@ -26,6 +26,7 @@ MultiplayerManager="*res://scripts/multiplayer/multiplayer_manager.gd"
 GlobalSettings="*res://scripts/global_settings.gd"
 Save="*res://scripts/save.gd"
 NodePaths="*res://scripts/node_paths.gd"
+MultiplayerItemSpawner="*res://scripts/multiplayer_item_spawner.gd"
 
 [display]
 

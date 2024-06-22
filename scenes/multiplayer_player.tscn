@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bpnxbf6gljdng" path="res://assets/textures/Player/Slime/SlimeDead.png" id="9_3opht"]
 [ext_resource type="PackedScene" uid="uid://dbetawyfqtbyb" path="res://scenes/inventory.tscn" id="9_4kpmk"]
 [ext_resource type="Texture2D" uid="uid://ccxk63p6ill4d" path="res://assets/textures/Player/Slime/SlimeRun.png" id="9_r6rtj"]
-[ext_resource type="PackedScene" uid="uid://uuc46qbb5h8h" path="res://scenes/item_placer.tscn" id="10_1gua5"]
+[ext_resource type="PackedScene" uid="uid://uuc46qbb5h8h" path="res://scenes/item_placer.tscn" id="11_652d4"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b5p5h"]
 properties/0/path = NodePath(".:position")
@@ -549,7 +549,7 @@ one_shot = true
 visible = false
 item_placer = NodePath("../ItemPlacer")
 
-[node name="ItemPlacer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_1gua5")]
+[node name="ItemPlacer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_652d4")]
 player = NodePath("..")
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_respawn"]
