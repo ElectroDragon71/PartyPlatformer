@@ -24,6 +24,7 @@ collision_mask = 0
 script = ExtResource("1_m0ac6")
 
 [node name="ItemSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_vdyx2")
 
 [node name="CheckPlacement" parent="." instance=ExtResource("2_qnyxj")]

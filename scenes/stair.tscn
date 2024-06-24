@@ -11,7 +11,7 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 properties/1/path = NodePath(".:replicated_position")
 properties/1/spawn = true
-properties/1/replication_mode = 1
+properties/1/replication_mode = 2
 properties/2/path = NodePath(".:replicated_rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
@@ -24,6 +24,7 @@ collision_mask = 0
 script = ExtResource("1_tu7o1")
 
 [node name="ItemSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_v40sf")
 
 [node name="CheckPlacement" parent="." instance=ExtResource("2_cgdbc")]

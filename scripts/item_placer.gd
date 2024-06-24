@@ -46,17 +46,24 @@ func _clear_preview():
 	preview_instance.queue_free()
 
 func _create_placement_preview():
-	if item_to_place == "":
-		return
-	
-	#create the preview
-	print("generating preview instance")
-	var preview_scene = load(item_to_place)
-	preview_instance = preview_scene.instantiate() as Item
-	preview_instance.set_collision_enabled(false)
-	item_node.add_child(preview_instance, true)
-	preview_instance.item_sync.set_multiplayer_authority(player.player_id)
-	preview_instance.previewing = true
+	print("create placement preview")
+	_create_placement_preview_server.rpc_id(1)
+
+@rpc("any_peer", "call_local", "reliable")
+func _create_placement_preview_server():
+	if multiplayer.is_server():
+		if item_to_place == "":
+			return
+		
+		#create the preview
+		print("generating preview instance")
+		var preview_scene = load(item_to_place)
+		preview_instance = preview_scene.instantiate() as Item
+		preview_instance.set_collision_enabled(false)
+		item_node.add_child(preview_instance, true)
+		print(str(multiplayer.get_remote_sender_id()))
+		preview_instance.item_sync.set_multiplayer_authority(multiplayer.get_remote_sender_id())
+		preview_instance.previewing = true
 
 func _place_item():
 	if preview_instance == null:

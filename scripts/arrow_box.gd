@@ -20,10 +20,10 @@ func _physics_process(_delta):
 		if timer_started == false:
 			timer.start()
 			timer_started = true
-	#_sync()
+	_sync()
 
 func _sync():
-	if is_multiplayer_authority():
+	if %ItemSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		replicated_position = position
 		replicated_rotation = rotation
 	else:
