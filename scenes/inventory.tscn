@@ -3,11 +3,10 @@
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_r10k0"]
 [ext_resource type="Theme" uid="uid://bgyplibccu45i" path="res://resources/settings_theme.tres" id="1_xyjld"]
 
-[node name="Inventory" type="Popup"]
+[node name="Inventory" type="Window"]
 title = "Items"
 position = Vector2i(20, 0)
 size = Vector2i(280, 160)
-visible = true
 min_size = Vector2i(280, 160)
 keep_title_visible = true
 script = ExtResource("1_r10k0")
