@@ -51,5 +51,6 @@ _spawnable_scenes = PackedStringArray("res://scenes/stair.tscn", "res://scenes/a
 spawn_path = NodePath("../Items")
 
 [node name="Items" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Projectiles" type="Node2D" parent="."]

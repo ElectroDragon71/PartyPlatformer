@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bk4wbvdbit0q5"]
+[gd_scene load_steps=25 format=3 uid="uid://bk4wbvdbit0q5"]
 
 [ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_fsyi5"]
 [ext_resource type="Shape2D" uid="uid://dhhosieefl2f3" path="res://resources/player_standing_cshape.tres" id="3_4ag6m"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bpnxbf6gljdng" path="res://assets/textures/Player/Slime/SlimeDead.png" id="9_3opht"]
 [ext_resource type="PackedScene" uid="uid://dbetawyfqtbyb" path="res://scenes/inventory.tscn" id="9_4kpmk"]
 [ext_resource type="Texture2D" uid="uid://ccxk63p6ill4d" path="res://assets/textures/Player/Slime/SlimeRun.png" id="9_r6rtj"]
+[ext_resource type="PackedScene" uid="uid://thxpv47rvp4a" path="res://scenes/inv_button.tscn" id="10_xm3be"]
 [ext_resource type="PackedScene" uid="uid://uuc46qbb5h8h" path="res://scenes/item_placer.tscn" id="11_652d4"]
+[ext_resource type="Theme" uid="uid://bgyplibccu45i" path="res://resources/settings_theme.tres" id="11_xa8e0"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b5p5h"]
 properties/0/path = NodePath(".:position")
@@ -545,6 +547,14 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="InvButton" parent="." instance=ExtResource("10_xm3be")]
+
+[node name="Button" type="Button" parent="InvButton"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("11_xa8e0")
+text = "Items"
+
 [node name="Inventory" parent="." node_paths=PackedStringArray("item_placer") instance=ExtResource("9_4kpmk")]
 visible = false
 item_placer = NodePath("../ItemPlacer")
@@ -554,3 +564,4 @@ player = NodePath("..")
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_respawn"]
 [connection signal="timeout" from="RespawnTimer2" to="." method="_respawn"]
+[connection signal="pressed" from="InvButton/Button" to="Inventory" method="_on_inv_button_pressed"]

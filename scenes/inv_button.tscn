@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://thxpv47rvp4a"]
+
+[ext_resource type="Script" path="res://scripts/inv_button.gd" id="1_33fb7"]
+
+[node name="InvButton" type="Window"]
+size = Vector2i(36, 12)
+script = ExtResource("1_33fb7")
