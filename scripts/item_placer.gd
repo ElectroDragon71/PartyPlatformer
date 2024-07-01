@@ -83,13 +83,15 @@ func _create_placement_preview_server(item):
 		preview_instance.set_collision_enabled(false)
 		item_node.add_child(preview_instance, true)
 		print(str(remote_id))
-		self._handoff(preview_instance.name, remote_id)
+		self._handoff.rpc(preview_instance.name, remote_id)
 		preview_instance.previewing = true
 
+# Hands off the multiplayer authority to the player who chose the item
 @rpc("call_local")
 func _handoff(node_name, auth_id):
 	get_node(NodePaths.current_level_path).get_node("Items/" + node_name).set_multiplayer_authority(auth_id)
 
+# Sets local Preview Instance
 @rpc("any_peer", "call_local", "reliable")
 func _set_preview_instance(instance):
 	print(instance.name)
